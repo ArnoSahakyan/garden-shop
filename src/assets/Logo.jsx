@@ -1,6 +1,6 @@
 export default function Logo() {
   return (
-      <svg width="70" height="73" viewBox="0 0 70 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="35" cy="35" r="35" fill="#339933"/>
         <g clipPath="url(#clip0_1_102)">
           <mask id="mask0_1_102" maskUnits="userSpaceOnUse" x="19" y="55" width="33"

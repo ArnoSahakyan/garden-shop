@@ -1,0 +1,27 @@
+.Nav {
+  padding: 30px 40px 25px;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+
+    li {
+      font-size: 20px;
+      color: #282828;
+      transition: 300ms;
+      font-weight: 500;
+      &:hover {
+        color: #339933;
+      }
+    }
+  }
+}

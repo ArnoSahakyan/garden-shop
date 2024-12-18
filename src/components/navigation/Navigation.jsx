@@ -1,5 +1,5 @@
 
-import './Navigation.css'
+import './Navigation.scss'
 
 import Logo from '../../assets/logo'
 import BasketEmpty from '../../assets/BasketEmpty'
