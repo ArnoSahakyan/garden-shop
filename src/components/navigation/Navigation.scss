@@ -1,6 +1,8 @@
+@use '@assets/webColors' as *;
+
 .Nav {
   padding: 30px 40px 25px;
-  border-bottom: 1px solid #DDDDDD;
+  border-bottom: 1px solid $grey-divider;
 }
 
 nav {
@@ -16,11 +18,11 @@ nav {
 
     li {
       font-size: 20px;
-      color: #282828;
+      color: $black;
       transition: 300ms;
       font-weight: 500;
       &:hover {
-        color: #339933;
+        color: $green;
       }
     }
   }

@@ -1,14 +1,14 @@
-
 import './Navigation.scss'
 
 import Logo from '../../assets/logo'
 import BasketEmpty from '../../assets/BasketEmpty'
+import {Link} from "react-router-dom";
 
 export default function Navigation(){
   return(
     <div className="Nav">
       <nav className="container">
-        <a href=""><Logo /></a>
+        <Link to="/"><Logo /></Link>
           <ul>
             <li><a href="" className="nav-link">Main Page</a></li>
             <li><a href="" className="nav-link">Categories</a></li>

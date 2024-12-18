@@ -1,0 +1,24 @@
+@use '@assets/webColors' as *;
+
+.ErrorPage {
+  width: 690px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 80px;
+  text-align: center;
+  h1{
+    font-size: 64px;
+    margin-top: 16px;
+    color: $black;
+  }
+  p{
+    color: $grey;
+    width: 70%;
+  }
+  a{
+    margin-top: 16px;
+  }
+}
