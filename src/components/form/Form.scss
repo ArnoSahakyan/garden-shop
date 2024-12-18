@@ -1,0 +1,28 @@
+@use '@assets/webColors' as *;
+
+.form-bg {
+	background: linear-gradient(#0b710b, #339933);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 32px 32px 0;
+	h1 {
+		color: $white;
+    font-size: 64px;
+	}
+  .row-form{
+    display:flex;
+    justify-content: space-around;
+  }
+  .row-form img{
+    width: 500px;
+    height: 300px;
+  }
+  
+  .row-form form{
+    display:flex;
+    flex-direction:column;
+    gap: 16px;
+  }
+}
