@@ -18,9 +18,9 @@ nav {
 
     li {
       font-size: 20px;
-      color: $black;
       transition: 300ms;
       font-weight: 500;
+
       &:hover {
         color: $green;
       }

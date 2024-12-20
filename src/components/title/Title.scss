@@ -1,0 +1,41 @@
+@use '@assets/webColors' as *;
+
+.Title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  h2 {
+    font-size: 64px;
+  }
+
+  h2 + div {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+
+    .line {
+      width: fit-content;
+      flex-grow: 1;
+      height: 1px;
+      background-color: $grey-divider;
+    }
+
+    .subtitle {
+      padding: 8px 16px;
+      font-weight: 500;
+      color: $grey;
+      border: 1px solid $grey-divider;
+      border-radius: 5px;
+
+      &.disabled {
+        background-color: $light-grey;
+      }
+
+      &.active {
+        color: $black;
+      }
+    }
+  }
+}
