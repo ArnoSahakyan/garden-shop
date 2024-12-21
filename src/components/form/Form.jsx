@@ -24,7 +24,7 @@ export default function Form() {
 					})}
 				>
 			<input
-        id="username"
+      
         type="text"
         {...register("UserName", {
           required: "Поле обязательно для заполнения",
@@ -37,13 +37,14 @@ export default function Form() {
             message: "Имя пользователя должно быть не более 20 символов",
           },
         })}
+				placeholder="Name"
       />
       {errors.UserName && (
         <span style={{ color: "white" }}>{errors.UserName.message}</span>
       )}
 	
 					<input
-						id="phone"
+		placeholder='Phone number'
 						type="tel"
 						{...register('PhoneNumber', {
 							required: 'Поле обязательно для заполнения',
@@ -56,8 +57,7 @@ export default function Form() {
 					{errors.PhoneNumber && (
 						<span style={{ color: 'white' }}>{errors.PhoneNumber.message}</span>
 					)}
-				 <input
-        id="email"
+				 <input placeholder='Email'
         type="email"
         {...register("Email", {
           required: "Поле обязательно для заполнения",

@@ -4,6 +4,7 @@ import Form from '../../components/form/Form';
 
 import Categories from '../../components/categories/Categories.jsx';
 import Sale from '../../components/sale/Sale.jsx';
+import { Conact } from '../../components/contact/Contact.jsx';
 
 function Home_Page() {
 	return (
@@ -17,6 +18,9 @@ function Home_Page() {
 			<div>
 				<Sale />
 			</div>
+            <div>
+                <Conact/>
+            </div>
 		</div>
 	);
 }
