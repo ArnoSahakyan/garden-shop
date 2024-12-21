@@ -16,10 +16,14 @@ nav {
     justify-content: center;
     gap: 32px;
 
-    li {
+    li a {
       font-size: 20px;
       transition: 300ms;
       font-weight: 500;
+
+      &.active {
+        color: $green;
+      }
 
       &:hover {
         color: $green;

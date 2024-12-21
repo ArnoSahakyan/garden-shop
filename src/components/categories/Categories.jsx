@@ -3,10 +3,10 @@ import Title from "../title/Title.jsx";
 import CategoryCard from "../categoryCard/CategoryCard.jsx";
 
 const categories = [
-    {title: "Fertilizer", img: "/plant.png"},
-    {title: "Protective products and septic tanks", img: "/plant.png"},
-    {title: "Planting material", img: "/plant.png"},
-    {title: "Tools and equipment", img: "/plant.png"},
+    {title: "Fertilizer", img: "/category1.png"},
+    {title: "Protective products and septic tanks", img: "/category2.png"},
+    {title: "Planting material", img: "/category3.png"},
+    {title: "Tools and equipment", img: "/category4.png"},
 ];
 
 export default function Categories() {
