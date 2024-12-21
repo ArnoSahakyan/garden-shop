@@ -1,3 +1,5 @@
+import ButtonBanner from '../buttonBanner/ButtonBanner';
+
 import './Form.scss';
 import natural from '/natural.jpeg';
 
@@ -6,8 +8,10 @@ export default function Form() {
 			<div className="container form-bg">
         <h1>5% off on the first order</h1>
 				<div className="row-form">
-        
-					<img src={natural} alt="" />
+        <div className='img-container'>
+				<img src={natural} alt="" />
+				</div>
+
 					<form action="">
 						<input type="text" placeholder="Name" required />
 						<input
@@ -17,7 +21,7 @@ export default function Form() {
 							required
 						/>
 						<input type="email" placeholder="Email" required />
-						<button>Get a discount</button>
+						<ButtonBanner className="ButtonBanner" title="Get a discount"/>
 					</form>
 				</div>
 			</div>
