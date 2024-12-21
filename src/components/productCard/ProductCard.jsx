@@ -20,7 +20,7 @@ export default function ProductCard({title, initialPrice, salePrice, discount, i
                 <Link to={title}>{title}</Link>
                 <div className="price">
                     <h2>${salePrice ? salePrice : initialPrice}</h2>
-                    <h5>${initialPrice && initialPrice}</h5>
+                    <h5>${initialPrice}</h5>
                 </div>
             </div>
         </div>

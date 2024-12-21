@@ -1,29 +1,78 @@
 import ButtonBanner from '../buttonBanner/ButtonBanner';
-
 import './Form.scss';
 import natural from '/natural.jpeg';
+import { useForm } from 'react-hook-form';
 
 export default function Form() {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
+
 	return (
-			<div className="container form-bg">
-        <h1>5% off on the first order</h1>
-				<div className="row-form">
-        <div className='img-container'>
-				<img src={natural} alt="" />
+		<div className="container form-bg">
+			<h1>5% off on the first order</h1>
+			<div className="row-form">
+				<div className="img-container">
+					<img src={natural} alt="" />
 				</div>
 
-					<form action="">
-						<input type="text" placeholder="Name" required />
-						<input
-							type="tel"
-							placeholder="Phone number"
-							pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-							required
-						/>
-						<input type="email" placeholder="Email" required />
-						<ButtonBanner className="ButtonBanner" title="Get a discount"/>
-					</form>
-				</div>
+				<form
+					onSubmit={handleSubmit((data) => {
+						console.log(data);
+					})}
+				>
+			<input
+        id="username"
+        type="text"
+        {...register("UserName", {
+          required: "Поле обязательно для заполнения",
+          minLength: {
+            value: 3,
+            message: "Имя пользователя должно быть не менее 3 символов",
+          },
+          maxLength: {
+            value: 20,
+            message: "Имя пользователя должно быть не более 20 символов",
+          },
+        })}
+      />
+      {errors.UserName && (
+        <span style={{ color: "white" }}>{errors.UserName.message}</span>
+      )}
+	
+					<input
+						id="phone"
+						type="tel"
+						{...register('PhoneNumber', {
+							required: 'Поле обязательно для заполнения',
+							pattern: {
+								value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/i,
+								message: 'Введите корректный номер телефона',
+							},
+						})}
+					/>
+					{errors.PhoneNumber && (
+						<span style={{ color: 'white' }}>{errors.PhoneNumber.message}</span>
+					)}
+				 <input
+        id="email"
+        type="email"
+        {...register("Email", {
+          required: "Поле обязательно для заполнения",
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
+            message: "Введите корректный адрес электронной почты",
+          },
+        })}
+      />
+      {errors.Email && (
+        <span style={{ color: "white" }}>{errors.Email.message}</span>
+      )}
+					<ButtonBanner className="ButtonBanner" title="Get a discount" />
+				</form>
 			</div>
+		</div>
 	);
 }
