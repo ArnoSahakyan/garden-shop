@@ -29,12 +29,13 @@
       border: 1px solid $grey-divider;
       border-radius: 5px;
 
-      &.disabled {
-        background-color: $light-grey;
+      &:hover {
+        color: $black;
+        cursor: pointer;
       }
 
-      &.active {
-        color: $black;
+      &.disabled {
+        background-color: $light-grey;
       }
     }
   }

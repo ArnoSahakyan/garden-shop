@@ -1,6 +1,6 @@
 import './Title.scss';
 
-export default function Title({title, subtitle, disabled}) {
+export default function Title({title, subtitle, disabled, onClick}) {
     return (
         <div className="Title">
             <h2>{title}</h2>
@@ -9,13 +9,8 @@ export default function Title({title, subtitle, disabled}) {
                     <div className="line"/>
                     {subtitle && (
                         <div
-                            className={`subtitle ${
-                                disabled === undefined
-                                    ? ''
-                                    : disabled
-                                        ? 'disabled'
-                                        : 'active'
-                            }`}
+                            className={`subtitle ${disabled && 'disabled'}`}
+                            onClick={onClick}
                         >
                             {subtitle}
                         </div>
