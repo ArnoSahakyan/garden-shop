@@ -1,6 +1,7 @@
 import './Sale.scss'
 import Title from "../title/Title.jsx";
 import ProductCard from "../productCard/ProductCard.jsx";
+import {useNavigate} from "react-router-dom";
 
 const sales = [
     {title: "Decorative forged bridge", discount: 50, initialPrice: 1000, salePrice: 500, img: "/product1.png"},
@@ -10,11 +11,14 @@ const sales = [
 ];
 
 export default function Sale() {
+    const navigate = useNavigate();
+
     return (
         <section className="Sale container">
             <Title
                 title="Sale"
                 subtitle="All sales"
+                onClick={() => navigate('/sales')}
             />
             <div className="Sale__cards">
                 {
