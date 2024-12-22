@@ -40,6 +40,9 @@
 
 @use '@assets/webColors' as *;
 
+.Form{
+  padding: 0px 40px;
+}
 .form-bg {
   background: linear-gradient(#0b710b, #339933);
   display: flex;

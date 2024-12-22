@@ -7,7 +7,7 @@ export default function CategoryCard({title, link, image}) {
             <Link to={`/${link}`}>
                 <img src={image} alt={title}/>
             </Link>
-            <Link to={`/${link}`}>{title}</Link>
+            <Link to={link}>{title}</Link>
         </div>
     );
 }

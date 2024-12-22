@@ -1,7 +1,8 @@
-.container>h1{
+@use '@assets/webColors' as *;
+.Contact>h1{
   
     font-size: 64px;
-    color: #282828;
+    color: $black;
     font-weight: 700;
     margin-top: 80px;
   
@@ -12,66 +13,72 @@
   padding-right: 40px;
 }
 .cards{
+  display: grid;
+  grid-template-columns:780px 548px;
+  gap: 32px;
+.item{
+  background-color:$light-grey;
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
-  gap: 32px;
-  .card-top{
+  gap: 16px;
+  border-radius:10px;
+}
+.item1{
+h1{
+  font-size: 20px;
+color:$grey;
+}
+a{
+  font-size: 40px;
+  font-weight: 700;
+}
+}
+.item2{
+  h6{
+    font-size: 20px;
+    color: $grey;
+  }
+  div{
     display: flex;
-    gap: 32px;
-    justify-content: space-between;
-
-    .card-top-item{
-      background-color:#F1F3F4;
-      padding:32px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      border-radius:5px;
-    }
-    .item1{
-      flex-grow: 1;
-      h1{
-        font-size: 20px;
-        color: #8B8B8B;
-        font-weight: normal;
-      }
-      .phone{
-        font-size:40px;
-        color: #282828;
-      }
-    }
-    .item2{
-      flex-grow: 1;
-      h1{
-        font-size: 20px;
-        color: #8B8B8B;
-        font-weight: normal;
-      }
-      div{
-        display: flex;
-        gap: 16px;
-      }
+    gap: 16px;
+    svg{
+      width: 43px;
     }
   }
-  .card-bottom{
-    display: flex;
-    gap: 32px;
-    justify-content: space-between;
+}
+.item3{
+  h1{
+    font-size: 20px;
+    color:$grey;
+  }
+  h2{
+    font-size: 40px;
+    font-weight: 700;
+  }
+}
+.item4{
+  h4{
+    font-size: 20px;
+    color: $grey;
+  }
+  h1{
+    font-size: 40px;
+    font-weight: 700;
+  }
+}
 
-    .card-bottom-item{
-      background-color:#F1F3F4;
-      padding:32px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      border-radius:5px;
-    }
-    .item1{
-      flex-grow: 3;
-    }
-    .item2{
-      flex-grow: 2;
-    }
+
+}
+
+.map{
+  margin-top: 32px;
+  margin-bottom: 80px;
+  iframe{
+    width: 100%;
+    min-height: 350px;
+    border-radius: 10px;
+    border: none;
+    outline: 1px solid transparent;
   }
 }
