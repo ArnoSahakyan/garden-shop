@@ -3,11 +3,13 @@ import Title from "../title/Title.jsx";
 import ProductCard from "../productCard/ProductCard.jsx";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {discountedProductsSelector} from "../../store/products/productsSlice.js";
+
 
 export default function Sale() {
     const navigate = useNavigate();
-    const sales = useSelector(discountedProductsSelector);
+    const discountedProducts = useSelector((state) =>
+        state.products.allProducts.filter((product) => product.discount)
+    );
 
     return (
         <section className="Sale container">
@@ -18,7 +20,7 @@ export default function Sale() {
             />
             <div className="Sale__cards">
                 {
-                    sales.slice(0, 4).map((item, index) => (
+                    discountedProducts.slice(0, 4).map((item, index) => (
                         <ProductCard
                             key={index}
                             product={item}

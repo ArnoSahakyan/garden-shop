@@ -1,0 +1,28 @@
+@use '@assets/webColors' as *;
+
+.filters{
+  display: flex;
+  gap: 16px;
+  .filter{
+    display: flex;
+    gap: 16px;
+
+    align-items:center;
+    h1{
+      font-size: 20px;
+    }
+    input{
+      padding: 8px;
+      padding-left: 16px;
+      max-width: 120px;
+      border:none;
+      outline: 1px solid $grey;
+      border-radius: 5px;
+      &::placeholder{
+        font-size: 16px;
+        color: $grey;
+      }
+    }
+
+  }
+}

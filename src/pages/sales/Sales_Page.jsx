@@ -1,16 +1,17 @@
 import Title from "../../components/title/Title.jsx";
 import {useSelector} from "react-redux";
-import {discountedProductsSelector} from "../../store/products/productsSlice.js";
 import ProductCard from "../../components/productCard/ProductCard.jsx";
 
 export default function Sales_Page() {
-    const sales = useSelector(discountedProductsSelector);
+    const discountedProducts = useSelector((state) =>
+        state.products.allProducts.filter((product) => product.discount)
+    );
     return (
         <div className="Sale container">
             <Title title="Discounted items"/>
             <div className="Sale__cards">
                 {
-                    sales.map((item, index) => (
+                    discountedProducts.map((item, index) => (
                         <ProductCard
                             key={index}
                             product={item}

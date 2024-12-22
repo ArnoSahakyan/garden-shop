@@ -16,13 +16,21 @@ const productsList = [
 
 const productsSlice = createSlice({
     name: "products",
-    initialState: productsList,
-    reducers: {},
-    selectors: {
-        allProductsSelector: state => state,
-        discountedProductsSelector: state => state.filter(product => product.discount)
-    }
+    initialState: {
+        allProducts:productsList,
+        filteredProducts: productsList,
+    },
+    reducers: {
+        filterByPrice:(state,action)=>{
+            
+            const {from,to}=action.payload
+            state.filteredProducts=state.allProducts.filter((product)=>product.initialPrice>=(from || 0)&&product.initialPrice<=(to || 10000))
+
+        },
+    },
+    
 })
 
-export const { allProductsSelector, discountedProductsSelector } = productsSlice.selectors
+export const { allProducts, filteredProducts } = productsSlice.selectors
+export const { filterByPrice } = productsSlice.actions;
 export default productsSlice.reducer;
