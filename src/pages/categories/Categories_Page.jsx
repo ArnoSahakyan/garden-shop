@@ -1,16 +1,11 @@
 import './Categories_Page.scss'
 import Title from "../../components/title/Title.jsx";
 import CategoryCard from "../../components/categoryCard/CategoryCard.jsx";
-
-const categories = [
-    {title: "Fertilizer", img: "/category1.png"},
-    {title: "Protective products and septic tanks", img: "/category2.png"},
-    {title: "Planting material", img: "/category3.png"},
-    {title: "Tools and equipment", img: "/category4.png"},
-    {title: "Pots and planters", img: "/category5.jpg"},
-];
+import {useSelector} from "react-redux";
+import {allCategoriesSelector} from "../../store/categories/categoriesSlice.js";
 
 export default function Categories_Page() {
+    const categories = useSelector(allCategoriesSelector);
     return (
         <div className="CategoriesPage container">
             <Title
@@ -18,11 +13,12 @@ export default function Categories_Page() {
             />
             <div className="CategoriesPage__cards">
                 {
-                    categories.map((item, index) => (
+                    categories.map(item => (
                         <CategoryCard
-                            key={index}
+                            key={item.id}
                             title={item.title}
                             image={item.img}
+                            link={`categories/${item.link}`}
                         />
                     ))
                 }

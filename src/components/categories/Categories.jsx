@@ -2,16 +2,12 @@ import './Categories.scss'
 import Title from "../title/Title.jsx";
 import CategoryCard from "../categoryCard/CategoryCard.jsx";
 import {useNavigate} from "react-router-dom";
-
-const categories = [
-    {title: "Fertilizer", img: "/category1.png"},
-    {title: "Protective products and septic tanks", img: "/category2.png"},
-    {title: "Planting material", img: "/category3.png"},
-    {title: "Tools and equipment", img: "/category4.png"},
-];
+import {useSelector} from "react-redux";
+import {allCategoriesSelector} from "../../store/categories/categoriesSlice.js";
 
 export default function Categories() {
     const navigate = useNavigate();
+    const categories = useSelector(allCategoriesSelector);
 
     return (
         <section className="Categories container">
@@ -22,11 +18,12 @@ export default function Categories() {
             />
             <div className="Categories__cards">
                 {
-                    categories.map((item, index) => (
+                    categories.slice(0,4).map((item, index) => (
                         <CategoryCard
                             key={index}
                             title={item.title}
                             image={item.img}
+                            link={`categories/${item.link}`}
                         />
                     ))
                 }
