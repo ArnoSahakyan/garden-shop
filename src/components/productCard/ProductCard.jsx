@@ -27,9 +27,6 @@ export default function ProductCard({product}) {
                 <Link to={`/products/${id}`}>{title}</Link>
                 <div className="price">
 
-                    <h2>${salePrice ? salePrice : initialPrice}</h2>
-                    <h5>${initialPrice}</h5>
-
                     <h2>${discount ? salePrice(initialPrice, discount) : initialPrice}</h2>
                     {
                         discount && <h5>${initialPrice}</h5>

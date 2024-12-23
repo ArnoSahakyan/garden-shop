@@ -1,8 +1,8 @@
 import './Contact.scss';
 
-export function Contact({container}) {
+export function Contact() {
 	return (
-		<div className={`Contact ${container || ""}`}>
+		<div className="Contact container">
 			<h1>Contact</h1>
 			<div className="cards">
 				<div className="item item1">

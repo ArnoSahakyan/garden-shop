@@ -1,8 +1,6 @@
 import Title from "../../components/title/Title.jsx";
 import {useSelector} from "react-redux";
 import ProductCard from "../../components/productCard/ProductCard.jsx";
-import { Contact } from "../../components/contact/Contact.jsx";
-
 import Filter from "../../components/filter/Filter.jsx";
 
 
@@ -24,7 +22,6 @@ export default function Products_Page() {
                     ))
                 }
             </div>
-            <Contact/>
         </div>
       
     )

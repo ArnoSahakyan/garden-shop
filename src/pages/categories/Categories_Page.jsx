@@ -3,7 +3,6 @@ import Title from "../../components/title/Title.jsx";
 import CategoryCard from "../../components/categoryCard/CategoryCard.jsx";
 import {useSelector} from "react-redux";
 import {allCategoriesSelector} from "../../store/categories/categoriesSlice.js";
-import { Contact } from '../../components/contact/Contact.jsx';
 
 export default function Categories_Page() {
     const categories = useSelector(allCategoriesSelector);
@@ -24,7 +23,6 @@ export default function Categories_Page() {
                     ))
                 }
             </div>
-            <Contact/>
         </div>
     )
 }
