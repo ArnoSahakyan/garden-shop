@@ -1,16 +1,20 @@
 import Title from "../../components/title/Title.jsx";
 import {useSelector} from "react-redux";
-import {allProductsSelector} from "../../store/products/productsSlice.js";
 import ProductCard from "../../components/productCard/ProductCard.jsx";
+import Filter from "../../components/filter/Filter.jsx";
+
 
 export default function Products_Page() {
-    const products = useSelector(allProductsSelector);
+    const filtered=useSelector((state)=>state.products.filteredProducts)
+
     return (
         <div className="Sale container">
+
             <Title title="All Products" />
+           <Filter />
             <div className="Sale__cards">
                 {
-                    products.map(item => (
+                    filtered.map(item => (
                         <ProductCard
                             key={item.id}
                             product={item}
@@ -19,5 +23,6 @@ export default function Products_Page() {
                 }
             </div>
         </div>
+      
     )
 }

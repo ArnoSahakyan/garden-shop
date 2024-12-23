@@ -26,6 +26,7 @@ export default function ProductCard({product}) {
             <div className="ProductCard__title">
                 <Link to={`/products/${id}`}>{title}</Link>
                 <div className="price">
+
                     <h2>${discount ? salePrice(initialPrice, discount) : initialPrice}</h2>
                     {
                         discount && <h5>${initialPrice}</h5>

@@ -1,0 +1,141 @@
+// @use '@assets/webColors' as *;
+
+// .form-bg {
+// 	background: linear-gradient(#0b710b, #339933);
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	flex-direction: column;
+// 	padding: 32px 32px 0;
+//   .row-form{
+//     display:flex;
+//  justify-content: space-between;
+//     align-items:center;
+
+//     .img-container{
+//       max-width: 748px;
+//       height: 360px;
+//       img{
+//         width:100%;
+//         height: 100%;
+//       }
+//   }
+// 	h1 {
+// 		color: $white;
+//     font-size: 64px;
+// 	}
+//   form{
+//     display:flex;
+//     flex-direction:column;
+//     input{
+
+ 
+//     }
+//   }
+//   }
+  
+
+  
+// }
+
+@use '@assets/webColors' as *;
+
+.Form{
+  padding: 0px 40px;
+}
+.form-bg {
+  background: linear-gradient(#0b710b, #339933);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 32px 32px 0;
+ border-radius:5px;
+ margin-top: 80px;
+
+  h1 {
+    color: $white;
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .row-form {
+ display: grid;
+ grid-template-columns: repeat(2,1fr);
+ gap: 30px;
+justify-items: center;
+align-items:center;
+
+    .img-container {
+      max-width: 748px;
+      height: 360px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        border-radius: 8px;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px; 
+      padding: 24px;
+      max-width: 516px;
+      width: 100%;
+
+      input {
+        padding: 16px 32px;
+        font-size: 16px;
+        border:none;
+        outline: 1px solid #FFFFFF;
+        border-radius: 4px;
+        background-color: transparent;
+        color:white;
+      }
+      input::placeholder{
+        color:$white;
+      }
+      // button {
+      //   padding: 16px 32px;
+      //   background-color: $white;
+      //   color: $black;
+      //   border: none;
+      //   border-radius: 4px;
+      //   font-size: 16px;
+      //   cursor: pointer;
+      //   transition: background 0.3s;
+
+      //   &:hover {
+      //     background-color:$green;
+      //     color: white;
+      //   }
+      // }
+    }
+  }
+
+  /* Адаптивность */
+  @media (max-width: 768px) {
+    .row-form {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+
+      .img-container {
+        max-width: 100%;
+        height: auto;
+      }
+
+      form {
+        max-width: 100%;
+      }
+    }
+
+    h1 {
+      font-size: 48px;
+    }
+  }
+}
