@@ -1,80 +1,55 @@
 @use '@assets/webColors' as *;
-.Contact>h1{
-  
-    font-size: 64px;
-    color: $black;
-    font-weight: 700;
-    margin-top: 80px;
-  
-}
 
-.container{
-  padding-left: 40px;
-  padding-right: 40px;
-}
-.cards{
-  display: grid;
-  grid-template-columns:780px 548px;
-  gap: 32px;
-.item{
-  background-color:$light-grey;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  border-radius:10px;
-}
-.item1{
-h1{
-  font-size: 20px;
-color:$grey;
-}
-a{
-  font-size: 40px;
-  font-weight: 700;
-}
-}
-.item2{
-  h6{
-    font-size: 20px;
-    color: $grey;
+.Contact {
+  padding: 0 40px;
+
+  h1 {
+    font-size: 64px;
+    margin-top: 80px;
   }
-  div{
-    display: flex;
-    gap: 16px;
-    svg{
-      width: 43px;
+
+  .cards {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns:780px 548px;
+    gap: 32px;
+
+    .item {
+      background-color: $light-grey;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-radius: 10px;
+
+      p {
+        font-size: 20px;
+        font-weight: 500;
+        color: $grey;
+      }
+
+      h2, a {
+        font-size: 40px;
+        font-weight: 600;
+      }
+
+      &.social > div {
+        display: flex;
+        gap: 16px;
+
+        svg {
+          width: 43px;
+        }
+      }
     }
   }
 }
-.item3{
-  h1{
-    font-size: 20px;
-    color:$grey;
-  }
-  h2{
-    font-size: 40px;
-    font-weight: 700;
-  }
-}
-.item4{
-  h4{
-    font-size: 20px;
-    color: $grey;
-  }
-  h1{
-    font-size: 40px;
-    font-weight: 700;
-  }
-}
 
-
-}
-
-.map{
+.map {
   margin-top: 32px;
   margin-bottom: 80px;
-  iframe{
+
+  iframe {
     width: 100%;
     min-height: 350px;
     border-radius: 10px;

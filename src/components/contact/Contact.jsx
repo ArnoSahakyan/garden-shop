@@ -5,12 +5,12 @@ export function Contact() {
 		<div className="Contact container">
 			<h1>Contact</h1>
 			<div className="cards">
-				<div className="item item1">
-					<h1>Phone</h1>
+				<div className="item">
+					<p>Phone</p>
 					<a href="tel:+7(499) 350-66-04">+7 (499) 350-66-04</a>
 				</div>
-				<div className="item item2">
-					<h6>Socials</h6>
+				<div className="item social">
+					<p>Socials</p>
 					<div>
 						<a href="https://www.instagram.com/">
 							<svg
@@ -44,20 +44,20 @@ export function Contact() {
 					</div>
 				</div>
 
-				<div className="item item3">
-					<h1>Address</h1>
+				<div className="item">
+					<p>Address</p>
 					<h2>Dubininskaya Ulitsa, 96, Moscow, Russia, 115093</h2>
 				</div>
-				<div className="item item4">
-					<h4>Working Hours</h4>
-					<h1>24 hours a day</h1>
+				<div className="item">
+					<p>Working Hours</p>
+					<h2>24 hours a day</h2>
 				</div>
 			
 			</div>
 			<div className="map">
 					<iframe
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2666.088384956623!2d37.6321047!3d55.7134705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b22a91ac945%3A0xf19f72681321ff46!2sIThub%20college!5e1!3m2!1sen!2sam!4v1734869142659!5m2!1sen!2sam"
-						allowfullscreen=""
+						allowFullScreen=""
 						loading="lazy"
 					></iframe>
 				</div>

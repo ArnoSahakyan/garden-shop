@@ -5,13 +5,13 @@ import Filter from "../../components/filter/Filter.jsx";
 
 
 export default function Products_Page() {
-    const filtered=useSelector((state)=>state.products.filteredProducts)
+    const filtered = useSelector((state) => state.products.filteredProducts)
 
     return (
         <div className="Sale container">
 
-            <Title title="All Products" />
-           <Filter />
+            <Title title="All Products"/>
+            <Filter/>
             <div className="Sale__cards">
                 {
                     filtered.map(item => (
@@ -23,6 +23,6 @@ export default function Products_Page() {
                 }
             </div>
         </div>
-      
+
     )
 }

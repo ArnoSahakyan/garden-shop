@@ -13,9 +13,14 @@ const categoriesSlice = createSlice({
     initialState: categoriesList,
     reducers: {},
     selectors: {
-        allCategoriesSelector: state => state
+        allCategoriesSelector: state => state,
+        categoryNamesSelector: state => {
+            return state.map(category => {
+                return {title: category.title, link: category.link};
+            });
+        }
     }
 })
 
-export const { allCategoriesSelector } = categoriesSlice.selectors
+export const { allCategoriesSelector, categoryNamesSelector } = categoriesSlice.selectors
 export default categoriesSlice.reducer;
