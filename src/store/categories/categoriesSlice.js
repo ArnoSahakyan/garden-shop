@@ -22,5 +22,8 @@ const categoriesSlice = createSlice({
     }
 })
 
+export const selectCategoryName = (link) => (state) =>
+    state.categories.find((category) => category.link === link).title;
+
 export const { allCategoriesSelector, categoryNamesSelector } = categoriesSlice.selectors
 export default categoriesSlice.reducer;

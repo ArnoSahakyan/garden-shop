@@ -2,19 +2,19 @@ import Title from "../../components/title/Title.jsx";
 import {useSelector} from "react-redux";
 import ProductCard from "../../components/productCard/ProductCard.jsx";
 import Filter from "../../components/filter/Filter.jsx";
-import {categoryNamesSelector} from "../../store/categories/categoriesSlice.js";
+import {selectCategoryName} from "../../store/categories/categoriesSlice.js";
 import {useParams} from "react-router-dom";
+import {selectProductByCategory} from "../../store/products/productsSlice.js";
 
 
 export default function Category_Page() {
     const {title} = useParams()
-    const categories = useSelector(categoryNamesSelector);
-    const currentCategory = categories.find(elem => elem.link === title).title;
-    const filtered = useSelector((state) => state.products.filteredProducts).filter(elem => elem.category === title);
+    const category = useSelector(selectCategoryName(title));
+    const filtered = useSelector(selectProductByCategory(title));
 
     return (
         <div className="Sale container">
-            <Title title={currentCategory}/>
+            <Title title={category}/>
             <Filter/>
             <div className="Sale__cards">
                 {
