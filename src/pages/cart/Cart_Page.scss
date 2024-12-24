@@ -1,11 +1,68 @@
-.Cart {
-  margin-top: 40px;
+@use '@assets/webColors' as *;
 
-  &__products {
+.CartPage {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 40px;
+
+  .empty {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    max-height: 580px;
-    overflow: auto;
+    gap: 32px;
+
+    & > div {
+      width: 313px;
+    }
+  }
+
+  .Cart {
+    display: flex;
+    gap: 32px;
+
+    &__products {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-height: 580px;
+      overflow: auto;
+    }
+
+    &__order {
+      width: 548px;
+      padding: 32px;
+      border-radius: 10px;
+      background-color: $light-grey;
+
+      .title {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        & > h2 {
+          font-size: 40px;
+          font-weight: 700;
+        }
+
+        h3 {
+          font-size: 40px;
+          font-weight: 500;
+          color: $grey;
+        }
+
+        & > div {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+
+          & > h2 {
+            font-size: 64px;
+            font-weight: 700;
+          }
+        }
+      }
+    }
   }
 }

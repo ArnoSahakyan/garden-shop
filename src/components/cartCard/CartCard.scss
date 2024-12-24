@@ -1,16 +1,18 @@
 @use '@assets/webColors' as *;
 
 .CartCard {
+  position: relative;
   display: flex;
   height: 180px;
   align-items: center;
   gap: 32px;
-  border-radius: 15px;
+  border-radius: 10px;
   border: 1px solid $grey-divider;
 
   &__img {
-    border-radius: 15px 0 0 15px;
+    border-radius: 10px 0 0 10px;
     width: 200px;
+    height: 100%;
     overflow: hidden;
     border: 1px solid $grey-divider;
 
@@ -49,5 +51,12 @@
         text-decoration: line-through;
       }
     }
+  }
+  & >   span {
+    position: absolute;
+    top: 26px;
+    right: 32px;
+    font-size: 16px;
+    cursor: pointer;
   }
 }

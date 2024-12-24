@@ -18,6 +18,25 @@ body {
   margin: 0 auto;
 }
 
+.basket-icon {
+  position: relative;
+
+  .count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: $green;
+    color: $white;
+    font-size: 12px;
+  }
+}
+
 a {
   text-decoration: none;
   color: inherit;

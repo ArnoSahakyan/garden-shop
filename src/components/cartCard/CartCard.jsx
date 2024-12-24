@@ -1,12 +1,12 @@
 import './CartCard.scss';
 import AddCounter from "../addCounter/AddCounter.jsx";
 
-export default function CartCard({product}) {
+export default function CartCard({product, deleteProduct}) {
     const salePrice = (price, discount) => {
         return Math.ceil(price * (100 - discount) / 100);
     };
 
-    const {id, title, count, initialPrice, discount, img} = product;
+    const {id, title, quantity, initialPrice, discount, img} = product;
 
     return (
         <div className='CartCard'>
@@ -17,7 +17,7 @@ export default function CartCard({product}) {
                 <h4>{title}</h4>
                 <div className="price">
                     <AddCounter
-                        count={count}
+                        count={quantity}
                         // handleDecrement={handleDecrement}
                         // handleIncrement={handleIncrement}
                     />
@@ -27,6 +27,7 @@ export default function CartCard({product}) {
                     }
                 </div>
             </div>
+            <span onClick={deleteProduct}>&#x2715;</span>
         </div>
     );
 }
