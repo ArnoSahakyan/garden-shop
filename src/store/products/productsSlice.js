@@ -4,7 +4,7 @@ const productsList = [
   {
     id: 1,
     title: "Decorative forged bridge",
-    category: "",
+    category: "pots",
     description: "Description here...",
     discount: 50,
     initialPrice: 1000,
@@ -132,23 +132,35 @@ const productsSlice = createSlice({
       );
       if (check) {
         state.filteredProducts = state.filteredProducts.filter((elm) =>
-          check == true ? elm.discount : true
+          check === true ? elm.discount : true
         );
       }
       switch (selectedOption) {
         case "newest":
           state.filteredProducts = state.filteredProducts
             .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
-            .filter((elm) => (action.payload == true ? elm.discount : true));
+            .filter((elm) => (action.payload === true ? elm.discount : true));
           break;
         case "high-low":
           state.filteredProducts = state.filteredProducts.sort(
-            (a, b) => a.initialPrice - b.initialPrice
+              (a, b) =>
+                  (b.discount
+                      ? b.initialPrice * (1 - b.discount / 100)
+                      : b.initialPrice) -
+                  (a.discount
+                      ? a.initialPrice * (1 - a.discount / 100)
+                      : a.initialPrice)
           );
           break;
         case "low-high":
           state.filteredProducts = state.filteredProducts.sort(
-            (a, b) => b.initialPrice - a.initialPrice
+              (a, b) =>
+                  (a.discount
+                      ? a.initialPrice * (1 - a.discount / 100)
+                      : a.initialPrice) -
+                  (b.discount
+                      ? b.initialPrice * (1 - b.discount / 100)
+                      : b.initialPrice)
           );
           break;
         case "default":

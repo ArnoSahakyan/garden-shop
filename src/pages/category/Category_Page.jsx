@@ -15,7 +15,7 @@ export default function Category_Page() {
     return (
         <div className="Sale container">
             <Title title={category}/>
-            <Filter/>
+            <Filter input={true}/>
             <div className="Sale__cards">
                 {
                     filtered.length > 0
