@@ -197,31 +197,7 @@ const productsSlice = createSlice({
 			}
 		},
 
-		// filterByDiscount: (state, action) => {
-		//   console.log(action);
-
-		//   state.filteredProducts = state.allProducts.filter((product) =>
-		//     action.payload == true ? product.discount : true
-		//   );
-		// },
-		// sortedProductH: (state, action) => {
-		//   state.filteredProducts = state.allProducts
-		//     .sort((a, b) => a.initialPrice - b.initialPrice)
-		//     .filter((elm) => (action.payload == true ? elm.discount : true));
-		// },
-		// sortedProductL: (state, action) => {
-		//   state.filteredProducts = state.allProducts
-		//     .sort((a, b) => b.initialPrice - a.initialPrice)
-		//     .filter((elm) => (action.payload == true ? elm.discount : true));
-		// },
-		// sortedProductD: (state, action) => {
-		//   state.filteredProducts = state.allProducts
-		//     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
-		//     .filter((elm) => (action.payload == true ? elm.discount : true));
-		// },
-		// reset: (state) => {
-		//   state.filteredProducts = state.allProducts.sort((a, b) => a.id - b.id);
-		// },
+		
 	},
 });
 
