@@ -1,6 +1,6 @@
 import './Navigation.scss'
 import Logo from '../../assets/logo'
-import BasketEmpty from '../../assets/BasketEmpty'
+import BasketIcon from '@assets/BasketIcon.jsx'
 import {Link, NavLink} from "react-router-dom";
 
 export default function Navigation() {
@@ -14,7 +14,7 @@ export default function Navigation() {
                     <li><NavLink to="products">All products</NavLink></li>
                     <li><NavLink to="sales">All sales</NavLink></li>
                 </ul>
-                <a href=""><BasketEmpty/></a>
+                <Link to="cart"><BasketIcon/></Link>
             </nav>
         </div>
     )
