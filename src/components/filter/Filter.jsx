@@ -1,108 +1,89 @@
-import './Filter.scss';
-import { useState } from 'react';
+import "./Filter.scss";
+import {useEffect, useState} from "react";
 import {
-  filterByPrice,
-  filterByDiscount,
-  sortedProductH,
-  sortedProductL,
-  reset
-} from '../../store/products/productsSlice.js';
-import { useDispatch } from 'react-redux';
+    // filterByPrice,
+    // filterByDiscount,
+    // sortedProductH,
+    // sortedProductL,
+    // reset,
+    // sortedProductD,
+    filterReducer,
+} from "../../store/products/productsSlice.js";
+import {useDispatch} from "react-redux";
+import ChevronBottomIcon from "@assets/ChevronBottomIcon.jsx";
 
-export default function Filter() {
-  const dispatch = useDispatch();
+export default function Filter({input}) {
+    const dispatch = useDispatch();
 
-  const [priceFrom, setPriceFrom] = useState('');
-  const [priceTo, setPriceTo] = useState('');
-  const [check, setCheck] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('default');
+    const [priceFrom, setPriceFrom] = useState("");
+    const [priceTo, setPriceTo] = useState("");
+    const [check, setCheck] = useState(false);
+    const [selectedOption, setSelectedOption] = useState("default");
 
-  const handlePriceFromChange = (e) => {
-    const from = Number(e.target.value) || 0;
-    setPriceFrom(e.target.value);
-    dispatch(filterByPrice({ from, to: priceTo }));
-  };
+    const handlePriceFromChange = (e) => {
+        setPriceFrom(e.target.value);
+    };
 
-  const handlePriceToChange = (e) => {
-    const to = Number(e.target.value) || 10000;
-    setPriceTo(e.target.value);
-    dispatch(filterByPrice({ from: priceFrom, to }));
-  };
+    const handlePriceToChange = (e) => {
+        setPriceTo(e.target.value);
+    };
 
-  const FilterCheck = () => {
-    let newCheck = !check;
-    setCheck(newCheck);
-    if (newCheck) {
-      dispatch(filterByDiscount());
-    } else {
-      dispatch(filterByPrice({ from: 0, to: 10000 }));
-    }
-  };
+    const filterCheck = () => {
+        let newCheck = !check;
+        setCheck(newCheck);
+    };
 
-  const applySorting = (value) => {
-    if (value === 'high-low') {
-      dispatch(sortedProductH());
-    } else if (value === 'low-high') {
-      dispatch(sortedProductL());
-    }
-  };
+    const handleOptionChange = (e) => {
+        const value = e.target.value;
+        setSelectedOption(value);
+    };
 
-  const resetFilters = () => {
-    setPriceFrom('');
-    setPriceTo('');
-    setCheck(false);
-    setSelectedOption('default');
-    dispatch(reset()); 
-  };
+    useEffect(() => {
+        dispatch(filterReducer({from: priceFrom, to: priceTo, check, selectedOption}));
+    }, [priceFrom, priceTo, selectedOption, check])
 
-  const handleOptionChange = (e) => {
-    const value = e.target.value;
-    setSelectedOption(value);
+    return (
+        <div className="filters">
+            <div className="filter">
+                <h3>Price</h3>
+                <input
+                    type="number"
+                    value={priceFrom}
+                    placeholder="from"
+                    onChange={handlePriceFromChange}
+                />
+                <input
+                    type="number"
+                    placeholder="to"
+                    value={priceTo}
+                    onChange={handlePriceToChange}
+                />
+            </div>
 
-    if (value === 'default') {
-      resetFilters(); 
-    } else {
-      applySorting(value);
-    }
-  };
+            {
+                input ? <div className="filter">
+                    <label className="custom-checkbox">
+                        Discounted Items
+                        <input type="checkbox" onChange={filterCheck} checked={check}/>
+                        <span/>
+                    </label>
+                </div> : null
+            }
 
-
-  return (
-    <div className="filters">
-      <div className="filter">
-        <h3>Price</h3>
-        <input
-          type="number"
-          value={priceFrom}
-          placeholder="from"
-          onChange={handlePriceFromChange}
-        />
-      </div>
-      <div className="filter">
-        <input
-          type="number"
-          placeholder="to"
-          value={priceTo}
-          onChange={handlePriceToChange}
-        />
-      </div>
-      <div className="filter">
-        <label className="custom-checkbox">
-          Discounted Items
-          <input type="checkbox" onChange={FilterCheck} checked={check} />
-          <span></span>
-        </label>
-      </div>
-      <div className="filter">
-        <div className="custom-select">
-          <select value={selectedOption} onChange={handleOptionChange}>
-            <option value="default">by default</option>
-            <option value="newest">newest</option>
-            <option value="high-low">price: high-low</option>
-            <option value="low-high">price: low-high</option>
-          </select>
+            <div className="filter">
+                <div className="custom-select">
+                    <ChevronBottomIcon/>
+                    <label className="select">
+                        Sorted
+                        <select value={selectedOption} onChange={handleOptionChange}>
+                            <option value="default">by default</option>
+                            <option value="newest">newest</option>
+                            <option value="high-low">price: high-low</option>
+                            <option value="low-high">price: low-high</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }

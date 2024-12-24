@@ -12,7 +12,7 @@ export default function Products_Page() {
         <div className="Sale container">
 
             <Title title="All Products"/>
-            <Filter/>
+            <Filter input={true}/>
             <div className="Sale__cards">
                 {
                     filtered.map(item => (
