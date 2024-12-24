@@ -4,14 +4,15 @@ import {selectProductById} from "../../store/products/productsSlice.js";
 import {useSelector} from "react-redux";
 import ButtonCard from "../../components/buttonCard/ButtonCard.jsx";
 import {useState} from "react";
+import AddCounter from "../../components/addCounter/AddCounter.jsx";
 
 export default function Product_Page() {
     const {id} = useParams();
     const product = useSelector(selectProductById(Number(id)));
     const {title, description, initialPrice, discount, img} = product;
-    
+
     const [isExpanded, setIsExpanded] = useState(false);
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
     const [cart, setCart] = useState([]);
 
     const salePrice = (price, discount) => {
@@ -34,34 +35,34 @@ export default function Product_Page() {
 
 
     const addCart = () => {
-        if (count === 0) return; 
+        if (count === 0) return;
         const productToAdd = {
             ...product,
             quantity: count,
-            totalPrice: salePrice(initialPrice, discount) * count, 
+            totalPrice: salePrice(initialPrice, discount) * count,
         };
 
         setCart(prevCart => {
             const index = prevCart.findIndex(item => item.id === productToAdd.id);
             if (index !== -1) {
-         
+
                 const updatedCart = [...prevCart];
                 updatedCart[index].quantity += productToAdd.quantity;
                 updatedCart[index].totalPrice = salePrice(initialPrice, discount) * updatedCart[index].quantity;
                 return updatedCart;
             } else {
-        
+
                 return [...prevCart, productToAdd];
             }
         });
 
-        setCount(0);
+        setCount(1);
     };
 
     return (
         <div className="ProductPage container">
             <div className="ProductPage__img">
-                <img src={img} alt={title} />
+                <img src={img} alt={title}/>
             </div>
             <div className="ProductPage__info">
                 <h2>{title}</h2>
@@ -75,13 +76,13 @@ export default function Product_Page() {
                     )}
                 </div>
                 <div className="action">
-                    <div className='counter'>
-                        <button className='decrement' onClick={handleDecrement}>-</button>
-                        <span>{count}</span>
-                        <button className='increment' onClick={handleIncrement}>+</button>
-                    </div>
+                    <AddCounter
+                        count={count}
+                        handleIncrement={handleIncrement}
+                        handleDecrement={handleDecrement}
+                    />
                     <div className="btn">
-                        <ButtonCard title="Add to cart" onClick={addCart} />
+                        <ButtonCard title="Add to cart" onClick={addCart}/>
                     </div>
                 </div>
                 <h4>Description</h4>

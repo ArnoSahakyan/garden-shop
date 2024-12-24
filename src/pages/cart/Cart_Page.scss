@@ -1,3 +1,11 @@
 .Cart {
   margin-top: 40px;
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 580px;
+    overflow: auto;
+  }
 }
