@@ -55,12 +55,12 @@ export function Contact() {
 			
 			</div>
 			<div className="map">
-					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2666.088384956623!2d37.6321047!3d55.7134705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b22a91ac945%3A0xf19f72681321ff46!2sIThub%20college!5e1!3m2!1sen!2sam!4v1734869142659!5m2!1sen!2sam"
-						allowFullScreen=""
-						loading="lazy"
-					></iframe>
-				</div>
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4496.310968912722!2d37.632105!3d55.713471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b22a91ac945%3A0xf19f72681321ff46!2sIThub%20college!5e0!3m2!1sen!2sam!4v1735074389576!5m2!1sen!2sam"
+					allowFullScreen=""
+					loading="lazy"
+					/>
+			</div>
 		</div>
 	);
 }
