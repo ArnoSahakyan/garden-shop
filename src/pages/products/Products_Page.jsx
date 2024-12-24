@@ -7,6 +7,7 @@ import Filter from "../../components/filter/Filter.jsx";
 export default function Products_Page() {
     const filtered = useSelector((state) => state.products.filteredProducts)
 
+
     return (
         <div className="Sale container">
 

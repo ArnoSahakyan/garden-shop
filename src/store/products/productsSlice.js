@@ -139,6 +139,20 @@ const productsSlice = createSlice({
 					product.initialPrice <= (to || 10000)
 			);
 		},
+       filterByDiscount:(state)=>{
+        state.filteredProducts=state.allProducts.filter(product=>product.discount)
+       },
+			 sortedProductH:(state)=>{
+				state.filteredProducts=state.allProducts.sort((a,b)=>a.initialPrice-b.initialPrice)
+			 },
+			 sortedProductL:(state)=>{
+				state.filteredProducts=state.allProducts.sort((a,b)=>b.initialPrice-a.initialPrice)
+			 },
+			 reset:(state)=>{
+
+				state.filteredProducts=state.allProducts
+			 }
+
 	},
 });
 
@@ -148,5 +162,5 @@ export const selectProductById = (id) => (state) =>
 export const selectProductByCategory = (category) => (state) =>
 	state.products.filteredProducts.filter((product) => product.category === category);
 
-export const { filterByPrice } = productsSlice.actions;
+export const { filterByPrice,filterByDiscount,sortedProductH,sortedProductL,reset } = productsSlice.actions;
 export default productsSlice.reducer;
