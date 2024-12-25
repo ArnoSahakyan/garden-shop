@@ -220,9 +220,7 @@ const productsSlice = createSlice({
     selectors: {
         totalCartQuantity: state => state.cart.reduce((total, item) => total + item.quantity, 0),
         getTotalPrice: (state) => state.cart.reduce((total, item) => {
-            const discount = item.discount || 0;
-            const discountedPrice = item.initialPrice * (1 - discount / 100);
-            return total + discountedPrice * item.quantity;
+            return total + item.totalPrice;
         }, 0).toFixed(2).replace('.', ',')
     }
 });

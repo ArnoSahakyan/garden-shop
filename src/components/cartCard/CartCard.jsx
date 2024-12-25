@@ -1,34 +1,29 @@
 import './CartCard.scss';
 import AddCounter from "../addCounter/AddCounter.jsx";
-import { useDispatch } from 'react-redux';
-import { addCart, deleteCart } from '../../store/products/productsSlice.js';
+import {useDispatch} from 'react-redux';
+import {addCart, deleteCart} from '../../store/products/productsSlice.js';
 
 export default function CartCard({product, deleteProduct}) {
-    const salePrice = (price, discount) => {
-        return Math.ceil(price * (100 - discount) / 100);
-    };
-
-    const dispatch= useDispatch()
+    const dispatch = useDispatch()
     const {id, title, quantity, initialPrice, discountPrice, img, totalPrice} = product;
 
-   const handleQuantity=(id,newQuantity)=>{
-    if(newQuantity<=0){
-        dispatch(deleteCart(id))
-    }
-    else{
-        const totalPrice = salePrice(initialPrice,discount) * newQuantity;
+    const handleQuantity = (id, newQuantity) => {
+        if (newQuantity <= 0) {
+            dispatch(deleteCart(id))
+        } else {
+            const totalPrice = discountPrice ? discountPrice * newQuantity : initialPrice * newQuantity;
+            console.log("AAAA", totalPrice)
+            dispatch(
+                addCart({
+                    id,
+                    quantity: newQuantity,
+                    totalPrice: totalPrice,
+                })
+            );
 
-        dispatch(
-            addCart({
-                id,
-                quantity: newQuantity,
-                totalPrice: totalPrice,
-            })
-        );
-
+        }
     }
-   }
-    
+
     return (
         <div className='CartCard'>
             <div className="CartCard__img">
@@ -39,12 +34,12 @@ export default function CartCard({product, deleteProduct}) {
                 <div className="price">
                     <AddCounter
                         count={quantity}
-                       handleDecrement={()=>handleQuantity(id,quantity-1)}
-                       handleIncrement={()=>handleQuantity(id,quantity+1)}
+                        handleDecrement={() => handleQuantity(id, quantity - 1)}
+                        handleIncrement={() => handleQuantity(id, quantity + 1)}
                     />
-                    <h2>${discountPrice ? discountPrice : initialPrice}</h2>
+                    <h2>${discountPrice ? totalPrice : (initialPrice * quantity)}</h2>
                     {
-                        discountPrice && <h5>${initialPrice}</h5>
+                        discountPrice !== initialPrice && <h5>${initialPrice * quantity}</h5>
                     }
                 </div>
             </div>
