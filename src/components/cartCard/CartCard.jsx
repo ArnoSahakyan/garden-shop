@@ -6,18 +6,16 @@ import { addCart, deleteCart } from '../../store/products/productsSlice.js';
 export default function CartCard({product, deleteProduct}) {
     const salePrice = (price, discount) => {
         return Math.ceil(price * (100 - discount) / 100);
-     
     };
 
-    const dispatch=useDispatch()
-    const {id, title, quantity, initialPrice, discount, img,totalPrice} = product;
+    const dispatch= useDispatch()
+    const {id, title, quantity, initialPrice, discountPrice, img, totalPrice} = product;
 
    const handleQuantity=(id,newQuantity)=>{
     if(newQuantity<=0){
         dispatch(deleteCart(id))
     }
     else{
-       
         const totalPrice = salePrice(initialPrice,discount) * newQuantity;
 
         dispatch(
@@ -29,10 +27,7 @@ export default function CartCard({product, deleteProduct}) {
         );
 
     }
-
    }
-
-
     
     return (
         <div className='CartCard'>
@@ -47,9 +42,9 @@ export default function CartCard({product, deleteProduct}) {
                        handleDecrement={()=>handleQuantity(id,quantity-1)}
                        handleIncrement={()=>handleQuantity(id,quantity+1)}
                     />
-                    <h2>${discount ? salePrice(initialPrice, discount) : initialPrice}</h2>
+                    <h2>${discountPrice ? discountPrice : initialPrice}</h2>
                     {
-                        discount && <h5>${initialPrice}</h5>
+                        discountPrice && <h5>${initialPrice}</h5>
                     }
                 </div>
             </div>
