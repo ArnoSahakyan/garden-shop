@@ -182,21 +182,41 @@ const productsSlice = createSlice({
                     break;
             }
         },
+        // addCart: (state, action) => {
+        //     if (!action.payload) {
+        //         return;
+        //     }
+        //     const {quantity, totalPrice, id} = action.payload;
+        //     const index = state.cart.findIndex((item) => item.id === id);
+        //     if (index !== -1) {
+        //         state.cart[index].quantity += quantity;
+        //         state.cart[index].totalPrice += totalPrice;
+        //     } else {
+
+        //         state.cart.push(action.payload);
+        //     }
+        // },
         addCart: (state, action) => {
             if (!action.payload) {
                 return;
             }
-            const {quantity, totalPrice, id} = action.payload;
+            const { quantity, totalPrice, id } = action.payload;
             const index = state.cart.findIndex((item) => item.id === id);
             if (index !== -1) {
-                state.cart[index].quantity += quantity;
-                state.cart[index].totalPrice += totalPrice;
+                // Обновляем существующий элемент
+                state.cart[index].quantity = quantity;
+                state.cart[index].totalPrice = totalPrice;
             } else {
-
-                state.cart.push(action.payload,);
+                // Добавляем новый элемент
+                state.cart.push(action.payload);
             }
         },
+        
+        deleteCart:(state,action)=>{
+            state.cart=state.cart.filter((item)=>item.id!=action.payload)
+         },
     },
+
     selectors: {
         totalCartQuantity: state => state.cart.reduce((total, item) => total + item.quantity, 0),
         getTotalPrice: (state) => state.cart.reduce((total, item) => {
@@ -220,5 +240,6 @@ export const {totalCartQuantity, getTotalPrice} = productsSlice.selectors;
 export const {
     filterReducer,
     addCart,
+    deleteCart
 } = productsSlice.actions;
 export default productsSlice.reducer;

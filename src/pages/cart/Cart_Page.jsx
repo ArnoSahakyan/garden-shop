@@ -3,9 +3,9 @@ import {useState} from "react";
 import Modal from "../../components/modal/Modal.jsx";
 import Title from "../../components/title/Title.jsx";
 import {useNavigate} from "react-router-dom";
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import CartCard from "../../components/cartCard/CartCard.jsx";
-import {getTotalPrice, totalCartQuantity} from "../../store/products/productsSlice.js";
+import {deleteCart, getTotalPrice, totalCartQuantity} from "../../store/products/productsSlice.js";
 import ButtonCard from "../../components/buttonCard/ButtonCard.jsx";
 
 export default function Cart_Page() {
@@ -15,7 +15,13 @@ export default function Cart_Page() {
     const toggleModal = () => setIsOpen(!isOpen);
     const totalProducts = useSelector(totalCartQuantity)
     const totalPrice = useSelector(getTotalPrice)
+    
+const dispatch=useDispatch()
 
+
+    const handleDelet=(id)=>{
+        dispatch(deleteCart(id))
+    }
     return (
         <div className='CartPage container'>
             <Title title="Shopping cart" subtitle="Back to store" onClick={() => navigate('/')}/>
@@ -45,6 +51,7 @@ export default function Cart_Page() {
                                     <CartCard
                                         key={product.id}
                                         product={product}
+                                        deleteProduct={()=>handleDelet(product.id)}
                                     />
                                 ))
                             }
