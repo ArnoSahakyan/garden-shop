@@ -27,14 +27,14 @@ export default function Form() {
 						<input
 							type="text"
 							{...register('UserName', {
-								required: 'Поле обязательно для заполнения',
+								required: "This field is required",
 								minLength: {
 									value: 3,
-									message: 'Имя пользователя должно быть не менее 3 символов',
+									message: 'Username must be at least 3 characters long',
 								},
 								maxLength: {
 									value: 20,
-									message: 'Имя пользователя должно быть не более 20 символов',
+									message: 'Username must be no more than 20 characters',
 								},
 							})}
 							placeholder="Name"
@@ -47,10 +47,10 @@ export default function Form() {
 							placeholder="Phone number"
 							type="tel"
 							{...register('PhoneNumber', {
-								required: 'Поле обязательно для заполнения',
+								required: 'This field is required',
 								pattern: {
 									value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/i,
-									message: 'Введите корректный номер телефона',
+									message: 'Enter a valid phone number',
 								},
 							})}
 						/>
@@ -63,10 +63,10 @@ export default function Form() {
 							placeholder="Email"
 							type="email"
 							{...register('Email', {
-								required: 'Поле обязательно для заполнения',
+								required: 'This field is required',
 								pattern: {
 									value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
-									message: 'Введите корректный адрес электронной почты',
+									message: 'Enter a valid email address',
 								},
 							})}
 						/>
