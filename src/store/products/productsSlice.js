@@ -182,25 +182,12 @@ const productsSlice = createSlice({
                     break;
             }
         },
-        // addCart: (state, action) => {
-        //     if (!action.payload) {
-        //         return;
-        //     }
-        //     const {quantity, totalPrice, id} = action.payload;
-        //     const index = state.cart.findIndex((item) => item.id === id);
-        //     if (index !== -1) {
-        //         state.cart[index].quantity += quantity;
-        //         state.cart[index].totalPrice += totalPrice;
-        //     } else {
 
-        //         state.cart.push(action.payload);
-        //     }
-        // },
         addCart: (state, action) => {
             if (!action.payload) {
                 return;
             }
-            const { quantity, totalPrice, id } = action.payload;
+            const {quantity, totalPrice, id} = action.payload;
             const index = state.cart.findIndex((item) => item.id === id);
             if (index !== -1) {
                 // Обновляем существующий элемент
@@ -211,10 +198,14 @@ const productsSlice = createSlice({
                 state.cart.push(action.payload);
             }
         },
-        
-        deleteCart:(state,action)=>{
-            state.cart=state.cart.filter((item)=>item.id!=action.payload)
-         },
+
+        deleteCart: (state, action) => {
+            state.cart = state.cart.filter((item) => item.id !== action.payload)
+        },
+        emptyCart: (state) => {
+            console.log("AAAAAA")
+            state.cart = [];
+        }
     },
 
     selectors: {
@@ -234,11 +225,12 @@ export const selectProductByCategory = (category) => (state) =>
         (product) => product.category === category
     );
 
-export const {totalCartQuantity, getTotalPrice,onlyDiscountedProducts} = productsSlice.selectors;
+export const {totalCartQuantity, getTotalPrice, onlyDiscountedProducts} = productsSlice.selectors;
 
 export const {
     filterReducer,
     addCart,
-    deleteCart
+    deleteCart,
+    emptyCart
 } = productsSlice.actions;
 export default productsSlice.reducer;

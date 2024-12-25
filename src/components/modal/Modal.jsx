@@ -21,7 +21,7 @@ export default function Modal({toggleModal}) {
             <div className='Modal__background'/>
             <div className="Modal__text">
                 <h2>Congratulations!</h2>
-                <p>Your order has been successfully placed on the website..</p>
+                <p>Your order has been successfully placed on the website.</p>
                 <p>A manager will contact you shortly to confirm your order.</p>
                 <span onClick={toggleModal}>&#x2715;</span>
             </div>
