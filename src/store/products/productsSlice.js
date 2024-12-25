@@ -221,7 +221,8 @@ const productsSlice = createSlice({
         totalCartQuantity: state => state.cart.reduce((total, item) => total + item.quantity, 0),
         getTotalPrice: (state) => state.cart.reduce((total, item) => {
             return total + item.totalPrice;
-        }, 0).toFixed(2).replace('.', ',')
+        }, 0).toFixed(2).replace('.', ','),
+        onlyDiscountedProducts: (state) => state.filteredProducts.filter((item) => item.discount)
     }
 });
 
@@ -233,7 +234,7 @@ export const selectProductByCategory = (category) => (state) =>
         (product) => product.category === category
     );
 
-export const {totalCartQuantity, getTotalPrice} = productsSlice.selectors;
+export const {totalCartQuantity, getTotalPrice,onlyDiscountedProducts} = productsSlice.selectors;
 
 export const {
     filterReducer,
