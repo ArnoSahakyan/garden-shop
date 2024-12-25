@@ -1,12 +1,6 @@
 import "./Filter.scss";
 import {useEffect, useState} from "react";
 import {
-    // filterByPrice,
-    // filterByDiscount,
-    // sortedProductH,
-    // sortedProductL,
-    // reset,
-    // sortedProductD,
     filterReducer,
 } from "../../store/products/productsSlice.js";
 import {useDispatch} from "react-redux";

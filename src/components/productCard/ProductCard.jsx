@@ -1,33 +1,33 @@
 import './ProductCard.scss';
 import {Link} from "react-router-dom";
 import ButtonCard from "../buttonCard/ButtonCard.jsx";
-import { useDispatch, useSelector } from 'react-redux';
-import { addCart } from '../../store/products/productsSlice.js';
+import {useDispatch, useSelector} from 'react-redux';
+import {addCart, selectIsProductInCart} from '../../store/products/productsSlice.js';
 
 export default function ProductCard({product}) {
     const salePrice = (price, discount) => {
         return Math.ceil(price * (100 - discount) / 100);
     };
 
-    const dispatch=useDispatch()
-    const list=useSelector(state=>state.products.cart)
-
+    const dispatch = useDispatch()
 
     const {id, title, initialPrice, discount, img} = product;
 
-    const handeAddCart=()=>{
-        const productAdd={
-            id:id,
-            title:title,
-            initialPrice:initialPrice,
-            discountPrice:salePrice(initialPrice,discount),
-            quantity:1,
-            totalPrice:salePrice(initialPrice,discount),
-            img:img
+    const isAdded = useSelector(selectIsProductInCart(id))
+
+    const handeAddCart = () => {
+        const productAdd = {
+            id: id,
+            title: title,
+            initialPrice: initialPrice,
+            discountPrice: salePrice(initialPrice, discount),
+            quantity: 1,
+            totalPrice: salePrice(initialPrice, discount),
+            img: img
         }
         dispatch(addCart(productAdd))
     }
-   
+
     return (
         <div className="ProductCard">
             <div className="ProductCard__image">
@@ -39,7 +39,8 @@ export default function ProductCard({product}) {
                 }
                 <div className="btn">
                     <ButtonCard
-                        title="Add to cart"
+                        title={isAdded ? 'Added' : 'Add to cart'}
+                        added={isAdded}
                         onClick={handeAddCart}
                     />
                 </div>
@@ -53,6 +54,7 @@ export default function ProductCard({product}) {
                     {
                         discount && <h5>${initialPrice}</h5>
                     }
+                    {isAdded}
                 </div>
             </div>
         </div>

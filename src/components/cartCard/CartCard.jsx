@@ -12,7 +12,6 @@ export default function CartCard({product, deleteProduct}) {
             dispatch(deleteCart(id))
         } else {
             const totalPrice = discountPrice ? discountPrice * newQuantity : initialPrice * newQuantity;
-            console.log("AAAA", totalPrice)
             dispatch(
                 addCart({
                     id,
