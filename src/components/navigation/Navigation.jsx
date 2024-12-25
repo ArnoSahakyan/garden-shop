@@ -1,23 +1,22 @@
-
-import './Navigation.css'
-
+import './Navigation.scss'
 import Logo from '../../assets/logo'
-import BasketEmpty from '../../assets/BasketEmpty'
+import BasketIcon from '@assets/BasketIcon.jsx'
+import {Link, NavLink} from "react-router-dom";
 
-export default function Navigation(){
-  return(
-    <div className="Nav">
-      <nav className="container">
-        <a href=""><Logo /></a>
-          <ul>
-            <li><a href="" className="nav-link">Main Page</a></li>
-            <li><a href="" className="nav-link">Categories</a></li>
-            <li><a href="" className="nav-link">All products</a></li>
-            <li><a href="" className="nav-link">All sales</a></li>
-          </ul>
-          <a href=""><BasketEmpty/></a>
-      </nav>
-    </div>
-  )
+export default function Navigation() {
+    return (
+        <div className="Nav">
+            <nav className="container">
+                <Link to="/"><Logo/></Link>
+                <ul>
+                    <li><NavLink to="">Main Page</NavLink></li>
+                    <li><NavLink to="categories">Categories</NavLink></li>
+                    <li><NavLink to="products">All products</NavLink></li>
+                    <li><NavLink to="sales">All sales</NavLink></li>
+                </ul>
+                <Link to="cart"><BasketIcon/></Link>
+            </nav>
+        </div>
+    )
 }
 
