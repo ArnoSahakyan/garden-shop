@@ -190,11 +190,11 @@ const productsSlice = createSlice({
             const {quantity, totalPrice, id} = action.payload;
             const index = state.cart.findIndex((item) => item.id === id);
             if (index !== -1) {
-                // Обновляем существующий элемент
+         
                 state.cart[index].quantity = quantity;
                 state.cart[index].totalPrice = totalPrice;
             } else {
-                // Добавляем новый элемент
+       
                 state.cart.push(action.payload);
             }
         },
@@ -203,7 +203,7 @@ const productsSlice = createSlice({
             state.cart = state.cart.filter((item) => item.id !== action.payload)
         },
         emptyCart: (state) => {
-            console.log("AAAAAA")
+    
             state.cart = [];
         }
     },
