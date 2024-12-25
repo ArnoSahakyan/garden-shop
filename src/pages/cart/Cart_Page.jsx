@@ -58,7 +58,7 @@ export default function Cart_Page() {
                         <p>Looks like you have no items in your basket currently.</p>
                         <div>
                             <ButtonCard
-                                title="Continue Shopping"
+                                title='Continue Shopping'
                                 onClick={() => navigate('/products')}
                             />
                         </div>
@@ -130,9 +130,11 @@ export default function Cart_Page() {
                                 {errors.Email && (
                                     <span style={{color: '#282828'}}>{errors.Email.message}</span>
                                 )}
-                                <ButtonCard title="Order"/>
+                                <ButtonCard
+                                    title={submitted ? 'The order is placed' : 'Order'}
+                                    added={submitted}
+                                />
                             </form>
-
                         </div>
                     </div>
             }
