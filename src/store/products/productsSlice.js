@@ -200,6 +200,9 @@ const productsSlice = createSlice({
         deleteCart: (state, action) => {
             state.cart = state.cart.filter((item) => item.id !== action.payload)
         },
+        emptyCart: (state) => {
+            state.cart = [];
+        }
     },
 
     selectors: {
@@ -228,6 +231,7 @@ export const {totalCartQuantity, getTotalPrice, onlyDiscountedProducts} = produc
 export const {
     filterReducer,
     addCart,
-    deleteCart
+    deleteCart,
+    emptyCart
 } = productsSlice.actions;
 export default productsSlice.reducer;
