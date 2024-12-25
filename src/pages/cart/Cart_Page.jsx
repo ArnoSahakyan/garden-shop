@@ -7,6 +7,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import CartCard from "../../components/cartCard/CartCard.jsx";
 import {deleteCart, getTotalPrice, totalCartQuantity} from "../../store/products/productsSlice.js";
 import ButtonCard from "../../components/buttonCard/ButtonCard.jsx";
+import { useForm } from 'react-hook-form';
+import ButtonBanner from '../../components/buttonBanner/ButtonBanner.jsx';
+
 
 export default function Cart_Page() {
     const navigate = useNavigate();
@@ -15,10 +18,19 @@ export default function Cart_Page() {
     const toggleModal = () => setIsOpen(!isOpen);
     const totalProducts = useSelector(totalCartQuantity)
     const totalPrice = useSelector(getTotalPrice)
-    
+    const {
+		register,
+		handleSubmit,
+		formState: { errors },
+        reset
+	} = useForm();
+
+
 const dispatch=useDispatch()
-
-
+const onSubmit = (data) => { 
+    setIsOpen(true); 
+    reset(); 
+  };
     const handleDelet=(id)=>{
         dispatch(deleteCart(id))
     }
@@ -65,14 +77,59 @@ const dispatch=useDispatch()
                                     <h2>${totalPrice}</h2>
                                 </div>
                             </div>
-                            <div className="form">
-
-                            </div>
+           
+                                <form onSubmit={handleSubmit(onSubmit)}>
+                                    <input type="text"
+							{...register('UserName', {
+								required: "This field is required",
+								minLength: {
+									value: 3,
+									message: 'Username must be at least 3 characters long',
+								},
+								maxLength: {
+									value: 20,
+									message: 'Username must be no more than 20 characters',
+								},
+							})}
+							placeholder="Name"
+						/> 
+                        	{errors.UserName && (
+							<span style={{ color: '#282828' }}>{errors.UserName.message}</span>
+						)}
+                                    <input placeholder="Phone number"
+							type="tel"
+							{...register('PhoneNumber', {
+								required: 'This field is required',
+								pattern: {
+									value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/i,
+									message: 'Enter a valid phone number',
+								},
+							})}/>
+                            	{errors.PhoneNumber && (
+							<span style={{ color: '#282828' }}>
+								{errors.PhoneNumber.message}
+							</span>
+						)}
+                                    <input placeholder="Email"
+							type="email"
+							{...register('Email', {
+								required: 'This field is required',
+								pattern: {
+									value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
+									message: 'Enter a valid email address',
+								},
+							})} />
+                            	{errors.Email && (
+							<span style={{ color: '#282828' }}>{errors.Email.message}</span>
+						)}
+                               <ButtonCard title={"order"} />
+                                    </form>
+                         
                         </div>
                     </div>
             }
 
-            <p onClick={toggleModal}>Open</p>
+            {/* <p onClick={toggleModal}>Open</p> */}
         </div>
     )
 }
