@@ -9,7 +9,7 @@
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: $green;
+  background-color: #ff6f61;
   color: $white;
   border-radius: 5px;
   font-size: 20px;
@@ -17,7 +17,7 @@
   transition: 150ms;
 
   &:hover {
-    background-color: $black;
+    background-color: #e65c4d;
   }
 
   &.added {
